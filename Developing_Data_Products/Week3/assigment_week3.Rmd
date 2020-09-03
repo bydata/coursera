@@ -1,0 +1,36 @@
+---
+title: "Diamonds"
+author: "Ansgar Wolsing"
+date: "3 September 2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Diamonds
+
+### plotly supports 3D scatterplots, but are they useful?
+
+```{r plot1, cache=TRUE, message=FALSE, warning=FALSE}
+library(tidyverse)
+library(plotly)
+
+data("diamonds")
+
+p <- plot_ly(diamonds, 
+             x = ~carat, y = ~depth, z = ~price, color = ~cut,
+             size = 1, alpha = 0.3, symbol = "", symbols = c("diamond"))
+
+p %>% 
+  layout(scene = list(
+      xaxis = list(title = "Carat"),
+      yaxis = list(title = "Depth"),
+      zaxis = list(title = "Price")
+    ))
+
+```
+
+
+
