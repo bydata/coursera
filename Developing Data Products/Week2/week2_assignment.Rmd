@@ -22,8 +22,8 @@ library(WikidataQueryServiceR)
 query <-
   'SELECT ?club ?clubLabel ?venue ?venueLabel ?coordinates\nWHERE\n{\n	?club wdt:P31 wd:Q476028 .\n	?club wdt:P115 ?venue .\n	?venue wdt:P625 ?coordinates .\n	SERVICE wikibase:label { bd:serviceParam wikibase:language "en" }\n}'
 
-#df <- query_wikidata(query, format = "smart")
-df <- read_rds("df.RData")
+df <- query_wikidata(query, format = "smart")
+#df <- read_rds("df.RData")
 
 df <- df %>% 
   select(-club, -venue) %>% 
